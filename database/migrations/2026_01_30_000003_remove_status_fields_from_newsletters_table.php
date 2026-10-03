@@ -10,6 +10,11 @@ return new class extends Migration
     {
         if (Schema::hasTable('newsletters')) {
             Schema::table('newsletters', function (Blueprint $table) {
+                try {
+                    $table->dropIndex(['status', 'created_at']);
+                } catch (\Throwable $e) {
+                }
+
                 if (Schema::hasColumn('newsletters', 'subscribed_at')) {
                     $table->dropColumn('subscribed_at');
                 }
