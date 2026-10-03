@@ -15,8 +15,9 @@ mkdir -p \
     storage/logs \
     bootstrap/cache
 
+touch storage/logs/laravel.log || true
 chown -R www-data:www-data storage bootstrap/cache || true
-chmod -R 775 storage bootstrap/cache || true
+chmod -R 777 storage bootstrap/cache || true
 
 # Run package discovery
 php artisan package:discover --ansi || true
